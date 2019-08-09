@@ -4,13 +4,23 @@ title: About me
 subtitle: I take fashion advice from Kurt Martinson
 ---
 
-My name is Ryan Sites. I have the following qualities:
+My name is Ryan Sites. I consider myself passionate about all things devops and engineering. Orginally a Microsoft:registered: developer focused on the C# programming language. I am certainly not a Microsoft hater, and fully support their open source adoption over the past decade. However... I have found myself gravitating to functional and dynamic languages, and most recently been delving into the world of `Big Data` with Spark:tm: and Kubernetes:tm: with both Scala and Python!
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+## Favorite Tecnologies
 
-What else do you need?
+- JavaScript
+- NodeJS
+- Koa
+- Vue.js
+- React
+- Python
+- Scala
+- Kafka
 
-### my history
+## Favorite Frameworks and Libraries
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+- Lua
+- XO
+- Koa
+- Meow
+- Knack
