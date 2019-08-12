@@ -73,7 +73,7 @@ social-network-links:
   github: seesharpguy
   # twitter: daattali
   #  reddit: yourname
-#  linkedin: daattali
+  linkedin: ryan-sites-44116523
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
@@ -249,6 +249,7 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+  - jekyll-seo-tag
 
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
