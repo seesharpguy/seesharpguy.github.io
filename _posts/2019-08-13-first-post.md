@@ -11,7 +11,7 @@ Today is a special day for me for two reasons.
 1. 17 years ago today, I helped bring into this world my oldest son. `Happy Birthday Braden Sites!!!`
 2. Today marks the day I *finally* wrote my first blog!
 
-> I plan on writing a series of blog posts related to Apache Spark on Kubernetes, for the simple fact it that I don't think it can all be covered in a single post.
+> I plan on writing a series of blog posts related to Apache Spark on Kubernetes, for the simple fact that I don't think it can all be covered in a single post.
 
 Today I want to cover two very well known open source projects — Apache Spark, a framework for large-scale data processing; and Kubernetes. As of version 2.3, Apache Spark comes pre-packaged with native Kubernetes support. Users can run Spark workloads in an existing Kubernetes 1.7+ cluster and take advantage of Apache Spark’s ability to manage distributed data processing tasks. Apache Spark workloads can make direct use of Kubernetes clusters for multi-tenancy and sharing through Namespaces and Quotas, as well as administrative features such as Pluggable Authorization and Logging.
 
