@@ -18,7 +18,7 @@ At the heart of every engineering firm, the concepts of atomation are being spue
 
 Let me preface the rest of this post with the fact that I do *NOT* disagree with any of the aformentione quotes above. I have seen a tremendous increase in over-arching efficiencies within the DevOps space over the last decade. We saw it with better source control tools such as git and GitHub, and opensource delivery tools like Jenkins, allowing us to create automated deployments whether your team was using `GitFlow` or [trunk-based development](https://trunkbaseddevelopment.com/5-min-overview/).  
 
-Let's not disinclude our friends docker and kubernetes, paving the way for next-level automation. First was docker, which gave us OS-level virtualization to deliver software in packages called containers. Then came `kubernetes`, a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. (We first had to learn how to pronounce it!)
+Let's not disinclude our friends docker and kubernetes, paving the way for next-level automation. First was `docker`, which gave us OS-level virtualization to deliver software in packages called containers. Then came `kubernetes`, a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. (We first had to learn how to pronounce it!)
 Throw in helm charts, which gave us a way to add a templating engine around the deployment of docker images to kubernetes, some would say we have reached engineering utopia. My work is done here...
 
 ... or is it?
