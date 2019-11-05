@@ -29,4 +29,43 @@ Now that we have automated the process of delivering our software, including but
 
 I recently spent time as a `boots on the ground` engineer for one of the product teams I oversee. It had been a hot minute since the last time I had done day-to-day scrumming with agile team, but it did not take me long to see that there were opportunities to automate even the simplist of everyday tasks within software delivery. The team was using various communication channels such as Slack/Flowdock for chat, GH Pages and Confluence wiki for documentation. However, there were several times I saw questions like "How did you set up a token to authenticate to that", or "can someone send me the curl command used to post a document there", etc. After some quick math, it became abunduntly clear that there was ample time spent repeating mundane tasks over and over everyday to accomplish simple and small tasks to complete user stories... the minutia.  
 
-I could go into detail how something as simple as creating gists in GitHub to share would suffice, and I use this technique quite frequently. As a matter of fact, an opensource tool [Lepton](https://hackjutsu.com/Lepton/) has become one of my favorite tools for managing all of my gists! I could also go into great detail how tools like [Inomnia](https://insomnia.rest/) as a REST client have simplied development workflows numerous times for my teams. But today, I want to talk about using acustom built, project specific `cli` might be one of the most under valued tool in the shed.  
+I could go into detail how something as simple as creating gists in GitHub to share would suffice, and I use this technique quite frequently. As a matter of fact, an opensource tool [Lepton](https://hackjutsu.com/Lepton/) has become one of my favorite tools for managing all of my gists! I could also go on and and regarding tools like [Inomnia](https://insomnia.rest/) as a REST client have simplied development workflows numerous times for my teams. But today, I want to talk about using acustom built, project specific `cli` might be one of the most under valued tool in the shed.  
+
+## The cli
+
+I have been promoting the concept of local sandbox environments for all of my engineering teams. The ability to quickly stand up production like replica environments have become increasingly easy with the advent of tools like kubernetes and helm. However, getting them initialized the first time, with all needed sofware components within a system running, and initiating an end-to-end test can be cumbersome at times, especially when new engineers are introduced to the team. The documentation to on-board an egineer alone is sometimes pages long.
+
+For this post, I will speak to a particular project that leveraged SPARK on Kubernetes to perform traditional ETL jobs. Each client, has a specific set of `instructions` to transform their data to a common format used in downstream systems. Spark would connect to S3 buckets, consume delimited text files, leverage the `instructions` to perform typical data tranformations on DataFrames, write transformed delimited files back to S3 buckets for consumption downstream.
+
+Peforming this e2e without automation wouldn't be enjoyable in the least bit, ignoring the fact that it would take a tremendous amount of time putting all of the pieces in place to execute correctly. This is where the `cli` comes in! We decided to take one two-week sprint to engineer a cli that would automate 2 critical funtions for this team:
+
+1. Initialize Local Envrionment
+2. Execute E2E Test
+
+### Init
+
+The intialize local command (`init`) performed the following steps:  
+
+1. Cloned all system components to temporary directory
+2. Executed helm charts for all system components
+3. Initialized local kubernetes environment
+4. Cleaned temporary directory
+
+Our set-up instructions went from a myriad of prerequisites and 3 pages of `download this`, and `run this` to only 5 prerequisites (SPARK, Docker for Mac, git, SBT, Node), with SBT and SPARK the only two that aren't required for all projects. The 3 pages of instructions to onboard a new engineer went to:  
+
+```sh
+npm i @company/cli
+cli init
+```
+
+### E2E
+
+Running the `cli e2e` command from the terminal was even more magical. 🎉  
+
+![alt text][e2e]
+
+The `e2e` command was responsible for uploading test files to [minio](https://min.io/) an Amazon S3 Compatible Object Storage solution. Upon completion, it would then make http call to receive client specific `instructions` from a SpringBoot api in local kubernetes. It would pass the instructions as a parameter to the spark-submit call. This would create a [SPARK](https://spark.apache.org/docs/latest/running-on-kubernetes.html) driver pod in kubernetes that would execute the instructions provided, and place outputted files in a separate bucket in minio. After completion of the spark-submit, the cli would retrieve the newly placed files, and do data-driven assertions that the transformations met the expected output. (You even get a 🍕🍺 if all is well)
+
+This e2e process ran in 1-2 minutes each time, and could be executed from soup-to-nuts in less than 5 minutes. In a world where engineers move into, and out of project teams constantly, I feel confident that I can stand behind my original statement that there is a ton of opportunity to create efficiencies in our workstreams, and I think a custom `cli` is a great start!
+
+[e2e]: https://github.com/seesharpguy/seesharpguy.github.io/blob/master/img/cli.png "cli end-to-end"
