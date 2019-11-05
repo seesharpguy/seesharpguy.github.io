@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Automate Everything
-subtitle: including the minutia
+subtitle: Including the minutia
 # bigimg: /img/path.jpg
 tags: [cli, tools, automation, devops]
 ---
