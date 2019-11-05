@@ -60,11 +60,11 @@ cli init
 
 ### E2E
 
-Running the `cli e2e` command from the terminal was even more magical. 🎉  
+Running the `cli e2e` command from the terminal was even more magical. :tada:  
 
 ![alt text][e2e]
 
-The `e2e` command was responsible for uploading test files to [minio](https://min.io/) an Amazon S3 Compatible Object Storage solution. Upon completion, it would then make http call to receive client specific `instructions` from a SpringBoot api in local kubernetes. It would pass the instructions as a parameter to the spark-submit call. This would create a [SPARK](https://spark.apache.org/docs/latest/running-on-kubernetes.html) driver pod in kubernetes that would execute the instructions provided, and place outputted files in a separate bucket in minio. After completion of the spark-submit, the cli would retrieve the newly placed files, and do data-driven assertions that the transformations met the expected output. (You even get a 🍕🍺 if all is well)
+The `e2e` command was responsible for uploading test files to [minio](https://min.io/) an Amazon S3 Compatible Object Storage solution. Upon completion, it would then make http call to receive client specific `instructions` from a SpringBoot api in local kubernetes. It would pass the instructions as a parameter to the spark-submit call. This would create a [SPARK](https://spark.apache.org/docs/latest/running-on-kubernetes.html) driver pod in kubernetes that would execute the instructions provided, and place outputted files in a separate bucket in minio. After completion of the spark-submit, the cli would retrieve the newly placed files, and do data-driven assertions that the transformations met the expected output. (You even get a :pizza: :beer: if all is well)
 
 This e2e process ran in 1-2 minutes each time, and could be executed from soup-to-nuts in less than 5 minutes. In a world where engineers move into, and out of project teams constantly, I feel confident that I can stand behind my original statement that there is a ton of opportunity to create efficiencies in our workstreams, and I think a custom `cli` is a great start!
 
